@@ -1,0 +1,190 @@
+/* pages/judge/judge.wxss */
+.container {
+  min-height: 100vh;
+  padding: 30rpx;
+  box-sizing: border-box;
+  background: #16213e;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+}
+
+.room-id {
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: 600;
+}
+
+.day-num {
+  font-size: 36rpx;
+  color: #f093fb;
+  font-weight: 700;
+}
+
+.phase {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 8rpx 16rpx;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8rpx;
+}
+
+.judge-controls {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 20rpx;
+}
+
+.control-btns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.btn {
+  height: 90rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-start {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.btn-restart {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+}
+
+.players-section {
+  margin-bottom: 30rpx;
+}
+
+.players-scroll {
+  white-space: nowrap;
+  height: 120rpx;
+}
+
+.players-row {
+  display: flex;
+  gap: 16rpx;
+}
+
+.player-chip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  min-width: 100rpx;
+}
+
+.player-chip.dead {
+  opacity: 0.4;
+}
+
+.chip-name {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.chip-role {
+  font-size: 20rpx;
+  color: #667eea;
+  margin: 4rpx 0;
+}
+
+.chip-status {
+  font-size: 18rpx;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.skills-section {
+  margin-bottom: 30rpx;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12rpx;
+  padding: 20rpx;
+}
+
+.skill-label {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8rpx;
+}
+
+.skill-value {
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.skill-value.available {
+  color: #38ef7d;
+}
+
+.skill-value.used {
+  color: #eb3349;
+}
+
+.log-section {
+  margin-bottom: 30rpx;
+}
+
+.log-scroll {
+  height: 300rpx;
+}
+
+.log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.log-item {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 12rpx 16rpx;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8rpx;
+}
+
+.winner-section {
+  text-align: center;
+  padding: 40rpx;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 16rpx;
+}
+
+.winner-text {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #fff;
+}

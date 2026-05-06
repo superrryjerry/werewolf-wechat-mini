@@ -1,0 +1,39 @@
+<!-- pages/room/room.wxml -->
+<view class="container">
+  <!-- 房间信息 -->
+  <view class="room-header">
+    <text class="room-id">房间: {{roomId}}</text>
+    <text class="phase-tag">{{gamePhase === 'waiting' ? '等待中' : gamePhase === 'day' ? '白天' : gamePhase === 'night' ? '夜间' : '投票中'}}</text>
+  </view>
+
+  <!-- 玩家列表 -->
+  <view class="players-section">
+    <text class="section-title">玩家列表</text>
+    <view class="players-grid">
+      <view 
+        class="player-card {{!item.alive ? 'dead' : ''}} {{selectedPlayer === item.userId ? 'selected' : ''}}"
+        wx:for="{{players}}"
+        wx:key="userId"
+        bindtap="selectPlayer"
+        data-userid="{{item.userId}}"
+      >
+        <text class="player-avatar">👤</text>
+        <text class="player-name">{{item.name}}</text>
+        <text class="player-status">{{item.alive ? '存活' : '出局'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="actions">
+    <button class="btn" bindtap="showMyRole">👁 查看身份</button>
+    <button class="btn" bindtap="confirmVote">🗳 投票</button>
+    <button class="btn" bindtap="requestSpeak">🎤 发言</button>
+    <button class="btn btn-judge" bindtap="goToJudge" wx:if="{{!isJudge}}">⚖ 法官模式</button>
+  </view>
+
+  <!-- 我的信息 -->
+  <view class="my-info">
+    <text class="my-id">我的ID: {{myUserId}}</text>
+  </view>
+</view>

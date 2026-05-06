@@ -1,0 +1,74 @@
+<!-- pages/judge/judge.wxml -->
+<view class="container">
+  <!-- 房间信息 -->
+  <view class="header">
+    <text class="room-id">房间: {{roomId}}</text>
+    <text class="day-num">第{{dayNumber}}天</text>
+    <text class="phase">{{gamePhase}}</text>
+  </view>
+
+  <!-- 法官控制区 -->
+  <view class="judge-controls">
+    <text class="section-title">法官控制</text>
+    <view class="control-btns">
+      <button class="btn" bindtap="distributeRoles">🎲 分配角色</button>
+      <button class="btn btn-start" bindtap="startGame">▶️ 开始游戏</button>
+      <button class="btn" bindtap="nextPhase">⏭ 下一阶段</button>
+      <button class="btn btn-restart" bindtap="restartGame">🔄 重新开始</button>
+    </view>
+  </view>
+
+  <!-- 玩家状态 -->
+  <view class="players-section">
+    <text class="section-title">玩家状态 ({{players.length}}人)</text>
+    <scroll-view scroll-x="true" class="players-scroll">
+      <view class="players-row">
+        <view 
+          class="player-chip {{item.alive ? '' : 'dead'}}"
+          wx:for="{{players}}"
+          wx:key="userId"
+        >
+          <text class="chip-name">{{item.name}}</text>
+          <text class="chip-role">{{item.role || '?'}}</text>
+          <text class="chip-status">{{item.alive ? '存活' : '死亡'}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 技能面板 -->
+  <view class="skills-section">
+    <text class="section-title">技能状态</text>
+    <view class="skills-grid">
+      <view class="skill-item">
+        <text class="skill-label">女巫-毒药</text>
+        <text class="skill-value {{witchPoison ? 'available' : 'used'}}">{{witchPoison ? '✓ 可用' : '✗ 已用'}}</text>
+      </view>
+      <view class="skill-item">
+        <text class="skill-label">女巫-解药</text>
+        <text class="skill-value {{witchAntidote ? 'available' : 'used'}}">{{witchAntidote ? '✓ 可用' : '✗ 已用'}}</text>
+      </view>
+      <view class="skill-item">
+        <text class="skill-label">猎人</text>
+        <text class="skill-value {{hunterShoot ? 'used' : 'available'}}">{{hunterShoot ? '✗ 已用' : '✓ 可用'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 游戏日志 -->
+  <view class="log-section">
+    <text class="section-title">游戏记录</text>
+    <scroll-view scroll-y="true" class="log-scroll">
+      <view class="log-list">
+        <view class="log-item" wx:for="{{logMessages}}" wx:key="index">
+          {{item}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 胜利结果 -->
+  <view class="winner-section" wx:if="{{winner}}">
+    <text class="winner-text">🏆 {{winner}}</text>
+  </view>
+</view>

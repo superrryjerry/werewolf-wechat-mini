@@ -1,0 +1,66 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- Logo/标题区域 -->
+  <view class="header">
+    <view class="logo">🐺</view>
+    <text class="title">狼人杀</text>
+    <text class="subtitle">线上房间版</text>
+  </view>
+
+  <!-- 功能按钮区域 -->
+  <view class="action-area">
+    <!-- 创建房间 -->
+    <button class="btn btn-primary" bindtap="createRoom">
+      <text class="btn-icon">🎮</text>
+      创建房间
+    </button>
+    
+    <!-- 分割线 -->
+    <view class="divider">
+      <view class="divider-line"></view>
+      <text class="divider-text">或</text>
+      <view class="divider-line"></view>
+    </view>
+    
+    <!-- 输入房间号加入 -->
+    <view class="join-area">
+      <input 
+        class="input" 
+        type="text" 
+        maxlength="4" 
+        placeholder="输入4位房间号" 
+        placeholder-class="input-placeholder"
+        bindinput="onRoomIdInput"
+        value="{{roomId}}"
+      />
+      
+      <button class="btn btn-outline" bindtap="joinRoom">
+        <text class="btn-icon">🚪</text>
+        加入房间
+      </button>
+    </view>
+    
+    <!-- 快速加入 -->
+    <button class="btn btn-secondary" bindtap="quickJoin" wx:if="{{rooms.length > 0}}">
+      <text class="btn-icon">⚡</text>
+      快速加入
+    </button>
+  </view>
+
+  <!-- 房间列表（可选） -->
+  <view class="room-list" wx:if="{{rooms.length > 0}}">
+    <text class="section-title">可用房间</text>
+    <view class="rooms">
+      <view 
+        class="room-item" 
+        wx:for="{{rooms}}" 
+        wx:key="roomId"
+        bindtap="selectRoom"
+        data-roomid="{{item.roomId}}"
+      >
+        <text class="room-id">{{item.roomId}}</text>
+        <text class="room-info">{{item.playerCount}}人 · {{item.status === 'waiting' ? '等待中' : '游戏中'}}</text>
+      </view>
+    </view>
+  </view>
+</view>
